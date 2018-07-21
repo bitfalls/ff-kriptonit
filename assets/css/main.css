@@ -214,6 +214,10 @@
 			width: 90% !important;
 		}
 
+		.banner .inner header p {
+			font-size: small;
+		}
+
 	}
 
 /* Grid */
