@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
 
 /*
@@ -4056,7 +4055,7 @@
 			-webkit-transition: opacity 1.5s ease-in-out, visibility 1.5s;
 			-ms-transition: opacity 1.5s ease-in-out, visibility 1.5s;
 			transition: opacity 1.5s ease-in-out, visibility 1.5s;
-			background: #000000;
+			/* background: #000000; */
 			content: '';
 			display: block;
 			height: 100%;
@@ -4159,6 +4158,17 @@
 				.banner > article .inner > :last-child {
 					margin-bottom: 0;
 				}
+
+
+				.inner > img {
+					width: 100%;
+					margin: auto;
+				}
+				.inner h2 a, .inner p a {
+					color: white !important;
+					text-decoration: underline;
+				}
+		
 
 			.banner > article h2 {
 				font-size: 7rem;
@@ -4323,3 +4333,6 @@
 			}
 
 		}
+
+#premium_button1, #premium_button2, #premium_button3 {background-color: #FF420E; color: white !important; margin-top: 5px;}
+#premium_button2_explainer {font-size: smaller; font-style: italic;}

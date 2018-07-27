@@ -4,7 +4,7 @@
 		<title>Kriptonit</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="/assets/build/app.css" />
 	</head>
 	<body>
 
@@ -15,7 +15,7 @@
 
 		<!-- Banner -->
 			<section class="banner full">
-				<article>
+				<article class="instant">
 					<!-- <img src="images/slide01.jpg" alt="" /> -->
 					<div class="inner">
 						<header>
@@ -120,7 +120,8 @@
 										<p>Uobičajeno, plus još malo više</p>
 										<h2>Premium verzija</h2>
 									</header>
-									<p>Premium verzija izlazi u prvom i trećem tjednu svakog mjeseca. Sadrži isti tip sadržaja koji sadrži i besplatna verzija, uz to da nema reklame i prvo izdanje svakog mjeseca ima prijedlog projekta koji bi trebalo detaljnije pogledati. Uzmite to kao savjet za investicije ili savjet za poboljšanje karijere, nebitno, no jedan projek mjesečno biti će posebno istaknut.</p>
+									<p>Premium verzija izlazi u prvom i trećem tjednu svakog mjeseca. Sadrži isti tip sadržaja koji sadrži i besplatna verzija, uz to da nema reklame i prvo izdanje svakog mjeseca ima prijedlog projekta koji bi trebalo detaljnije pogledati. Uzmite to kao savjet za investicije ili savjet za poboljšanje karijere.</p>
+									<p>Uskoro dodajemo način za pretplaćivanje na ovu stranicu, a do tada se možete pretplatiti prateći <a style="color: black !important; text-decoration: underline !important" href="/manualno.html">ove manualne korake.</a></p>
 									<footer class="align-center">
 										<style>
 											input.letterfuelLF1337inptst{
@@ -173,14 +174,30 @@
 										</style>
 										
 										<div style="max-width: 400px; margin: auto;">
-											<form action="https://letterfuel.com/newsletter/5a6fb8cf-4ced-4565-9932-b862af221596/subscribe/" method="post" enctype="multipart/form-data">
+											<form   style="display: none" disabled="disabled" action="https://letterfuel.com/newsletter/5a6fb8cf-4ced-4565-9932-b862af221596/subscribe/" method="post" enctype="multipart/form-data">
 												<input type="hidden" style="display: none;" name="source" value="embedded-form" />
 												<div>
 													<label class="letterfuelLF1337inplbltst" for="letterfuelLF1337inptstEmail">Pretplata</label>
-													<input type="email" id="letterfuelLF1337inptstEmail" class="letterfuelLF1337inptst" name="email" placeholder="Your email" disabled="disabled" maxlength="500" required="" />
+													<input autocomplete="off" type="email" id="letterfuelLF1337inptstEmail-premium" class="letterfuelLF1337inptst premiummail" name="email" placeholder="Email" maxlength="500" required="" />
 												</div>
-												<input type="button" onclick="return false;" value="Premium izdanje (uskoro)" disabled="disabled" id="letterfuelLF1337inptbtnst">
+												<div class="4u$ 12u$(small)">
+													
+													<input type="radio" name="type" id="monthly" value="monthly">
+													<label for="monthly">Mjesečno: 0.01 ether</label>
+												</div>
+												<div class="4u$ 12u$(small)">
+													<input type="radio" name="type" id="annual" value="annual" checked="checked">
+													<label for="annual">Godišnje: 0.1 ether</label>
+												</div>
+												<input type="button" onclick="return false;"  value="Premium izdanje (Ledger)" id="premium_button1" class="premium_button" style="display: none" disabled="disabled">
+												<input type="button" onclick="return false;" value="Premium izdanje (MetaMask)" id="premium_button2" class="premium_button"  style="display: none" disabled="disabled">
+												<div id="premium_button2_explainer" style="display: none">Nedostaje vam <a target="_blank" href="https://bitfalls.com/hr/2018/02/16/metamask-send-receive-ether/">Metamask</a> ekstenzija.</div>
+												
+												<div style="display: none" id="premium_thanks">
+													<p>Hvala na prijavi!</p>
+												</div>
 											</form>
+											
 										</div>
 									</footer>
 								</div>
@@ -256,11 +273,9 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="/assets/js/web3.min.js"></script>
+		<script src="/assets/js/skel.min.js"></script>
+		<script src="/assets/build/app.js"></script>
 
 	</body>
 </html>

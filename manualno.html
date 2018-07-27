@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Kriptonit</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/assets/build/app.css" />
+	</head>
+	<body>
+
+
+		<!-- Two -->
+			<section id="two" class="wrapper style3">
+				<div class="inner">
+					<h2>1. Otvorite <a href="https://myetherwallet.com">MyEtherWallet</a> i odaberite "Contracts".</h2>
+					<img src="/images/guide/01.png" alt="Contracts on MyEtherWallet">
+				</div>
+				<hr>
+				<div class="inner">
+					<h2>2. Pod Address dodajte <span id="address">adresu</span> a pod ABI sljedeće, zatim kliknite Access:</h2>
+					<pre><code>
+[{
+	"constant": false,
+	"inputs": [
+		{
+		"name": "_monthOrYear",
+		"type": "uint8"
+		},
+		{
+		"name": "_email",
+		"type": "bytes32"
+		}
+	],
+	"name": "subscribeMe",
+	"outputs": [],
+	"payable": true,
+	"stateMutability": "payable",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [
+	  {
+		"name": "_email",
+		"type": "bytes32"
+	  }
+	],
+	"name": "checkExpires",
+	"outputs": [
+	  {
+		"name": "",
+		"type": "uint256"
+	  }
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+  }]
+					</code></pre>
+					
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>3. Odaberite SubscribeMe u izborniku funkcija.</h2>
+					<img src="/images/guide/02.png" alt="SubscribeMe">
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>4. Ovdje unesite email adresu i željenu duljinu trajanja pretplate</h2>
+					<form action="">
+							<div class="4u$ 12u$(small)">
+													
+									<input type="radio" name="type" id="monthly" value="monthly">
+									<label for="monthly">Mjesečno: 0.01 ether</label>
+								</div>
+								<div class="4u$ 12u$(small)">
+									<input type="radio" name="type" id="annual" value="annual" checked="checked">
+									<label for="annual">Godišnje: 0.1 ether</label>
+								</div>
+								<div>
+										<input autocomplete="off" type="email" id="letterfuelLF1337inptstEmail-premium" class="letterfuelLF1337inptst premiummail" name="email" placeholder="Email" maxlength="500" required="" />
+									</div>
+									<input type="button"  value="Računaj" id="premium_button1" class="premium_button">
+					</form>
+					<div>
+					<h2 id="subinfo" style="display: none">
+						U MyEtherWallet-u u prvo polje unesite <span id="durationspan">2 za godišnju pretplatu</span> a u drugo polje unesite <pre id="emailhash"></pre>
+					</span>
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>5. Odaberite željeni pristup vašem novčaniku, kliknite na Write</h2>
+					<img src="/images/guide/03.png" alt="Write">
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>6. Pod "Amount to Send" stavite <span id="amount">0.1</span>. Gas ne mijenjajte. Potvrdite transakciju na svakom sljedećem koraku.</h2>
+					<img src="/images/guide/04.png" alt="">
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>7. Unesite vaš email i ovdje!</h2>
+					<style>
+							input.letterfuelLF1337inptst{
+								display: block;
+								width: 100%;
+								height: 42px;
+								padding: 6px 12px;
+								font-size: 18px;
+								line-height: 1.6;
+								color: #666666;
+								background-color: #fff;
+								background-image: none;
+								border: 1px solid #ccc;
+								border-radius: 2px;
+								margin-bottom: 10px;
+								margin-top: 5px;
+								-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+								box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+								-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+								-o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+								transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+							}
+							input#letterfuelLF1337inptbtnst{
+								background: #ff420e;
+								color: white !important;
+								-webkit-appearance: button;
+								display: block;
+								width: 100%;
+								font-weight: normal;
+								text-align: center;
+								vertical-align: middle;
+								touch-action: manipulation;
+								cursor: pointer;
+								background-image: none;
+								border: 1px solid white;
+								white-space: nowrap;
+								padding: 6px 12px;
+								font-size: 18px;
+								line-height: 1.6;
+								border-radius: 2px;
+								-webkit-user-select: none;
+								-moz-user-select: none;
+								-ms-user-select: non;
+							}
+							label.letterfuelLF1337inplbltst{
+								font-family: Arial, sans-serif;
+								font-weight: 600;
+								color: #333;
+							}
+						</style>
+						
+						<div style="max-width: 400px; margin: auto;">
+							<form action="https://letterfuel.com/newsletter/5a6fb8cf-4ced-4565-9932-b862af221596/subscribe/" method="post" enctype="multipart/form-data">
+								<input type="hidden" style="display: none;" name="source" value="embedded-form" />
+								<div>
+									<label class="letterfuelLF1337inplbltst" for="letterfuelLF1337inptstEmail">Prijavi se</label>
+									<input type="email" id="letterfuelLF1337inptstEmail" class="letterfuelLF1337inptst" name="email" placeholder="Email" maxlength="500" required="" />
+								</div>
+								<input type="submit" value="Prijava" id="letterfuelLF1337inptbtnst">
+							</form>
+						</div>
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>Bonus: Provjera pretplate</h2>
+					<p style="font-size: larger">Da provjerite do kada traje vaša pretplata, u izborniku funkcija odaberite checkExpires, unesite istu vrijednost u polje _email kao i prije, i kliknite na Read.</p>
+					<img src="/images/guide/05.png" alt=""> 
+					<p style="font-size: larger">Vrijednost koju dobijete možete unijeti u <a href="https://www.epochconverter.com/">EpochConverter</a> i kliknuti na Timestamp to Human Date.</p>
+				</div>
+			</section>
+			
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://twitter.com/bitfalls" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="mailto:contact@bitfalls.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Bruno Škvorc. Sva prava pridržana.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+		<script src="/assets/js/web3.min.js"></script>
+		<script src="/assets/js/skel.min.js"></script>
+		<script src="/assets/js/jquery.min.js"></script>
+		
+		<script>
+
+			document.getElementById("address").innerText = "0x484637c005c96e9308525c2019430f6846157157";
+
+			document.getElementById("premium_button1").addEventListener("click", calchash);
+			document.getElementById("monthly").addEventListener("change", changeradio);
+			document.getElementById("annual").addEventListener("change", changeradio);
+			document.getElementById("letterfuelLF1337inptstEmail-premium").addEventListener("keyup", () => {
+				document.getElementById('subinfo').style.display = "none";
+			});
+
+			function calchash() {
+				let email = document.getElementById("letterfuelLF1337inptstEmail-premium").value;
+				let web3 = new window.Web3();
+				let hash = web3.fromAscii(web3.sha3(email));
+			
+				document.getElementById('emailhash').innerText = hash;
+				document.getElementById('subinfo').style.display = "block";
+			}
+
+			function changeradio(e) {
+				console.log(e.currentTarget.id);
+				console.log(e.currentTarget.checked);
+
+				document.getElementById('durationspan').innerText = (e.currentTarget.id == "annual") ? "2 za godišnju pretplatu" : "1 za mjesečnu pretplatu";
+				document.getElementById('amount').innerText = (e.currentTarget.id == "annual") ? "0.1" : "0.01";
+			}
+		</script>
+
+	</body>
+</html>

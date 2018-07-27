@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>FintechFriday</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/assets/build/app.css" />
+	</head>
+	<body>
+
+
+		<!-- Two -->
+			<section id="two" class="wrapper style3">
+				<div class="inner">
+					<h2>1. Open <a href="https://myetherwallet.com">MyEtherWallet</a> an pick "Contracts".</h2>
+					<img src="/images/guide/01.png" alt="Contracts on MyEtherWallet">
+				</div>
+				<hr>
+				<div class="inner">
+					<h2>2. Under Address add <span id="address">adresu</span> and under ABI add the following code, then click Access:</h2>
+					<pre><code>
+[{
+	"constant": false,
+	"inputs": [
+		{
+		"name": "_monthOrYear",
+		"type": "uint8"
+		},
+		{
+		"name": "_email",
+		"type": "bytes32"
+		}
+	],
+	"name": "subscribeMe",
+	"outputs": [],
+	"payable": true,
+	"stateMutability": "payable",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [
+	  {
+		"name": "_email",
+		"type": "bytes32"
+	  }
+	],
+	"name": "checkExpires",
+	"outputs": [
+	  {
+		"name": "",
+		"type": "uint256"
+	  }
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+  }]
+					</code></pre>
+					
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>3. Pick SubscribeMe in the dropdown.</h2>
+					<img src="/images/guide/02.png" alt="SubscribeMe">
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>4. Enter your email address here and the desired duration of the subscription.</h2>
+					<form action="">
+							<div class="4u$ 12u$(small)">
+													
+									<input type="radio" name="type" id="monthly" value="monthly">
+									<label for="monthly">Monthly: 0.01 ether</label>
+								</div>
+								<div class="4u$ 12u$(small)">
+									<input type="radio" name="type" id="annual" value="annual" checked="checked">
+									<label for="annual">Annual: 0.1 ether</label>
+								</div>
+								<div>
+										<input autocomplete="off" type="email" id="letterfuelLF1337inptstEmail-premium" class="letterfuelLF1337inptst premiummail" name="email" placeholder="Email" maxlength="500" required="" />
+									</div>
+									<input type="button"  value="Calculate" id="premium_button1" class="premium_button">
+					</form>
+					<div>
+					<p id="subinfo" style="display: none; font-size: larger">
+						Into the first field in MEW enter <span id="durationspan">2 for annual subscription</span> and into the other field enter: <pre id="emailhash"></pre>
+                    </p>
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>5. Choose the desired way to access your wallet, then click Unlock and Write</h2>
+					<img src="/images/guide/03.png" alt="Write">
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>6. Under "Amount to Send" put <span id="amount">0.1</span>. Do not change Gas. Confirm the transaction on every following step.</h2>
+					<img src="/images/guide/04.png" alt="">
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>7. Enter your email here as well!</h2>
+					<style>
+							input.letterfuelLF1337inptst{
+								display: block;
+								width: 100%;
+								height: 42px;
+								padding: 6px 12px;
+								font-size: 18px;
+								line-height: 1.6;
+								color: #666666;
+								background-color: #fff;
+								background-image: none;
+								border: 1px solid #ccc;
+								border-radius: 2px;
+								margin-bottom: 10px;
+								margin-top: 5px;
+								-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+								box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+								-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+								-o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+								transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+							}
+							input#letterfuelLF1337inptbtnst{
+								background: #ff420e;
+								color: white !important;
+								-webkit-appearance: button;
+								display: block;
+								width: 100%;
+								font-weight: normal;
+								text-align: center;
+								vertical-align: middle;
+								touch-action: manipulation;
+								cursor: pointer;
+								background-image: none;
+								border: 1px solid white;
+								white-space: nowrap;
+								padding: 6px 12px;
+								font-size: 18px;
+								line-height: 1.6;
+								border-radius: 2px;
+								-webkit-user-select: none;
+								-moz-user-select: none;
+								-ms-user-select: non;
+							}
+							label.letterfuelLF1337inplbltst{
+								font-family: Arial, sans-serif;
+								font-weight: 600;
+								color: #333;
+							}
+						</style>
+						
+						<div style="max-width: 400px; margin: auto;">
+							<form action="https://letterfuel.com/newsletter/56493304-5ae4-4a33-b160-a16dea088df8/subscribe/" method="post" enctype="multipart/form-data">
+								<input type="hidden" style="display: none;" name="source" value="embedded-form" />
+								<div>
+									<label class="letterfuelLF1337inplbltst" for="letterfuelLF1337inptstEmail">Subscribe</label>
+									<input type="email" id="letterfuelLF1337inptstEmail" class="letterfuelLF1337inptst" name="email" placeholder="Email" maxlength="500" required="" />
+								</div>
+								<input type="submit" value="Finalize Subscription" id="letterfuelLF1337inptbtnst">
+							</form>
+						</div>
+				</div>
+
+				<hr>
+
+				<div class="inner">
+					<h2>Bonus: Sub check</h2>
+					<p style="font-size: larger">To check when your subscription expires, pick checkExpires in the menu, enter the same value into the _email field as before and click Read.</p>
+					<img src="/images/guide/05.png" alt=""> 
+					<p style="font-size: larger">The value you get back can be entered into <a href="https://www.epochconverter.com/">EpochConverter</a> where clicking Timestamp to Human Date will show a date.</p>
+				</div>
+			</section>
+			
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://twitter.com/bitfalls" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="mailto:contact@bitfalls.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Bruno Škvorc. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+		<script src="/assets/js/web3.min.js"></script>
+		<script src="/assets/js/skel.min.js"></script>
+		<script src="/assets/js/jquery.min.js"></script>
+		
+		<script>
+
+            document.getElementById("address").innerText = "0x484637c005c96e9308525c2019430f6846157157";
+
+			document.getElementById("premium_button1").addEventListener("click", calchash);
+			document.getElementById("monthly").addEventListener("change", changeradio);
+			document.getElementById("annual").addEventListener("change", changeradio);
+			document.getElementById("letterfuelLF1337inptstEmail-premium").addEventListener("keyup", () => {
+				document.getElementById('subinfo').style.display = "none";
+			});
+
+			function calchash() {
+				let email = document.getElementById("letterfuelLF1337inptstEmail-premium").value;
+				let web3 = new window.Web3();
+				let hash = web3.fromAscii(web3.sha3(email));
+			
+				document.getElementById('emailhash').innerText = hash;
+				document.getElementById('subinfo').style.display = "block";
+			}
+
+			function changeradio(e) {
+				console.log(e.currentTarget.id);
+				console.log(e.currentTarget.checked);
+
+				document.getElementById('durationspan').innerText = (e.currentTarget.id == "annual") ? "2 for annual subscription" : "1 for monthly subscription";
+				document.getElementById('amount').innerText = (e.currentTarget.id == "annual") ? "0.1" : "0.01";
+			}
+		</script>
+
+	</body>
+</html>

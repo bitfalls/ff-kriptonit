@@ -1,8 +1,21 @@
-/*
-	Hielo by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
-*/
+require('../css/main.css');
+require('../css/font-awesome.min.css');
+
+require('babel-register');
+require('babel-polyfill');
+
+require('../js/util');
+const u2f = require('../js/u2f-api');
+
+import LedgerProvider from 'web3-provider-ledger';
+import LedgerDevice from 'web3-provider-ledger/device';
+
+const abi = require('../../build/contracts/Subscribers.json').abi;
+const address = (location.hostname == "localhost") ? '0x3134bcded93e810e1025ee814e87eff252cff422' : '0x484637c005c96e9308525c2019430f6846157157';
+const ethRpc = (location.hostname == "localhost") ? 'http://127.0.0.1:7545' : 'https://mainnet.infura.io/v3/eab9584c1d3f4e47aa7530bcd9b5ac33';
+
+var web3net;
+var SubsContract;
 
 var settings = {
 
@@ -199,9 +212,10 @@ var settings = {
 						$img = $slide.find('img');
 
 					// Slide.
-						$slide
-							.css('background-image', 'url("' + $img.attr('src') + '")')
-							.css('background-position', ($slide.data('position') ? $slide.data('position') : 'center'));
+					if ($img.attr('src')) {
+						$slide.css('background-image', 'url("' + $img.attr('src') + '")');
+					}
+						$slide.css('background-position', ($slide.data('position') ? $slide.data('position') : 'center'));
 
 					// Add to slides.
 						slides.push($slide);
@@ -309,7 +323,129 @@ var settings = {
 				});
 
 			}
-
 	});
 
 })(jQuery);
+
+(function(){
+	// Check for presence of web3
+	if (typeof web3 === 'undefined' || !web3) {
+		// Web3 is missing, so MetaMask is not installed
+		document.getElementById("premium_button2").disabled = "disabled";
+		document.getElementById("premium_button2_explainer").style.display = "inline-block";
+		web3net = new window.Web3(new window.Web3.providers.HttpProvider(ethRpc));
+	} else {
+		// Web3 is here, so activate the button
+		if (web3.eth.accounts.length == 0) {
+			document.getElementById("premium_button2").disabled = "disabled";
+			document.getElementById("premium_button2_explainer").innerText = "Please log into MetaMask first";
+			document.getElementById("premium_button2_explainer").style.display = "inline-block";
+		} else {
+			document.getElementById("premium_button2").addEventListener("click", () => {subscribe('mm')});
+			web3.eth.defaultAccount = web3.eth.accounts[0];
+			web3net = web3;
+		}
+	}
+	// Activate the Ledger button
+	document.getElementById("premium_button1").addEventListener("click", () => {subscribe('ledger')});
+})();
+
+function validateEmail(email) 
+{
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+function subscribe(method) {
+	console.log("Subscribing with method: " + method);
+
+	let duration = document.querySelector("input[name='type']:checked").value == 'monthly' ? 1 : 2;
+	let email = document.querySelector('#letterfuelLF1337inptstEmail-premium').value;
+	console.log("Subbing " + email + " for " + ((duration == 1) ? '1 month' : '1 year'));
+
+	if (!validateEmail(email)) {
+		alert("Invalid Email");
+		return false;
+	}
+
+	console.log("Email okay");
+
+	let priceMethod = (duration == 1) ? 'monthlyPrice' : 'annualPrice';
+
+	if (method == "ledger") {
+			console.log("Ledger mode");
+			const device = new LedgerDevice({
+							"accountIndex": 0,
+							"appId": location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: ''),
+							"u2f": u2f 
+						});
+
+			const web3ledger = new window.Web3(new LedgerProvider({device}));
+			web3ledger.eth.defaultAccount = web3ledger.eth.accounts[0];
+			console.log(web3ledger);
+
+			web3net.eth.contract(abi).at(address)[priceMethod](async function(error, result) {
+
+				console.log("Successfully called contract method");
+				console.log(error);
+				console.log(result);
+
+				if (error) {
+					alert("Could not fetch price");
+					return false;
+				}
+
+				let tx = await web3ledger.eth.contract(abi).at(address).subscribeMe(duration, web3net.fromAscii(web3net.sha3(email)), {
+					value: result.toString(10), // BigNumber object
+					gas: 90000
+					});
+
+				web3net.sendRawTransaction(tx, function(e, r) {
+					console.log(e);
+					console.log(r);
+				});
+			});
+	}
+
+	if (method == "mm") {
+		console.log("Metamask mode");
+
+		SubsContract = web3net.eth.contract(abi).at(address);
+
+		let encodedEmail = web3net.fromAscii(web3net.sha3(email));
+
+		console.log(encodedEmail);
+		
+		SubsContract.checkExpires(encodedEmail, function(error, result) {
+			
+			if (error) {
+				alert("Could not verify email - please email fintechfriday@pm.me");
+				return false;
+			}
+
+			if (result > 0) {
+				var r = confirm("You are already subscribed. If you'd like to extend your subscription, press OK.");
+				if (r == false) {
+					return false;
+				}
+			}
+
+			SubsContract[priceMethod](async function(error, result) {
+				if (error) {
+					alert("Could not fetch price");
+					return false;
+				}
+				SubsContract.subscribeMe(duration, encodedEmail, {
+					value: result.toString(10), // BigNumber object
+					gas: 90000
+				}, function(e, r) {
+					console.log(e);
+					console.log(r);
+
+					$('.premium_button').hide();
+					$('#premium_thanks').show();
+				});
+			});
+		});
+	}
+}

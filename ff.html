@@ -121,6 +121,8 @@
 										<h2>Premium Version</h2>
 									</header>
 									<p>The Premium version is published in the first and third week of each month and contains everything the free version does, plus the first one each month contains a tip on which project to keep an eye on. Take it as investment advice or career orientation advice, we don't care - but one project per month will be objectively singled out and we'll explain why. The Premium version has no ads.</p>
+									<p>We'll soon add a way to subscribe directly from this web page, but in the meanwhile please follow the <a style="color: black !important; text-decoration: underline !important" href="/manual.html">manual steps outlined here to do so.</a>.</p>
+
 									<footer class="align-center">
 										<style>
 											input.letterfuelLF1337inptst{
@@ -173,15 +175,31 @@
 										</style>
 										
 										<div style="max-width: 400px; margin: auto;">
-											<form action="https://letterfuel.com/newsletter/5a6fb8cf-4ced-4565-9932-b862af221596/subscribe/" method="post" enctype="multipart/form-data">
-												<input type="hidden" style="display: none;" name="source" value="embedded-form" />
-												<div>
-													<label class="letterfuelLF1337inplbltst" for="letterfuelLF1337inptstEmail">Subscribe</label>
-													<input type="email" id="letterfuelLF1337inptstEmail" class="letterfuelLF1337inptst" name="email" placeholder="Your email" disabled="disabled" maxlength="500" required="" />
-												</div>
-												<input type="button" onclick="return false;" value="Premium version (soon)" disabled="disabled" id="letterfuelLF1337inptbtnst">
-											</form>
-										</div>
+												<form   style="display: none" disabled="disabled" action="https://letterfuel.com/newsletter/56d780f6-4bd3-480d-a47f-9948dc57939b/subscribe/" method="post" enctype="multipart/form-data">
+													<input type="hidden" style="display: none;" name="source" value="embedded-form" />
+													<div>
+														<label class="letterfuelLF1337inplbltst" for="letterfuelLF1337inptstEmail">Pretplata</label>
+														<input autocomplete="off" type="email" id="letterfuelLF1337inptstEmail-premium" class="letterfuelLF1337inptst premiummail" name="email" placeholder="Email" maxlength="500" required="" />
+													</div>
+													<div class="4u$ 12u$(small)">
+														
+														<input type="radio" name="type" id="monthly" value="monthly">
+														<label for="monthly">Mjesečno: 0.01 ether</label>
+													</div>
+													<div class="4u$ 12u$(small)">
+														<input type="radio" name="type" id="annual" value="annual" checked="checked">
+														<label for="annual">Godišnje: 0.1 ether</label>
+													</div>
+													<input type="button" onclick="return false;"  value="Premium izdanje (Ledger)" id="premium_button1" class="premium_button" style="display: none" disabled="disabled">
+													<input type="button" onclick="return false;" value="Premium izdanje (MetaMask)" id="premium_button2" class="premium_button"  style="display: none" disabled="disabled">
+													<div id="premium_button2_explainer" style="display: none">Nedostaje vam <a target="_blank" href="https://bitfalls.com/hr/2018/02/16/metamask-send-receive-ether/">Metamask</a> ekstenzija.</div>
+													
+													<div style="display: none" id="premium_thanks">
+														<p>Hvala na prijavi!</p>
+													</div>
+												</form>
+												
+											</div>
 									</footer>
 								</div>
 							</div>
@@ -256,11 +274,9 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="/assets/js/web3.min.js"></script>
+		<script src="/assets/js/skel.min.js"></script>
+		<script src="/assets/build/app.js"></script>
 
 	</body>
 </html>
